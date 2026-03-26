@@ -1,0 +1,9 @@
+python-telegram-bot==20.7
+sentence-transformers
+faiss-cpu
+numpy
+llama-cpp-python
+transformers
+torch
+pillow
+sqlite3

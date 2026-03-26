@@ -1,0 +1,35 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# VS Code settings
+.vscode/
+
+# Model files
+*.gguf
+qwen/
+
+# Generated database
+chat.db
+
+# Generated embeddings
+embeddings.pkl
+
+# Temporary files
+temp.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# logs
+*.log
