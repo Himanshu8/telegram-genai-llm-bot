@@ -11,7 +11,7 @@ import asyncio
 TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 
 # ================================
-# 🗄️ DATABASE
+# DATABASE
 # ================================
 conn = sqlite3.connect("chat.db", check_same_thread=False)
 cursor = conn.cursor()
@@ -37,7 +37,7 @@ def save_chat(user_id, user_msg, bot_msg):
 
 
 # ================================
-# 🔥 MEMORY
+# MEMORY
 # ================================
 user_memory = {}
 
@@ -47,10 +47,10 @@ def update_memory(user_id, message):
 
 
 # ================================
-# ⌨️ TYPING EFFECT (BEST VERSION)
+# TYPING EFFECT (BEST VERSION)
 # ================================
 async def send_typing(update, text):
-    msg = await update.message.reply_text("⏳ Thinking...")
+    msg = await update.message.reply_text(" Thinking...")
 
     words = text.split()
     current = ""
@@ -58,21 +58,21 @@ async def send_typing(update, text):
     for word in words:
         current += word + " "
         await msg.edit_text(current)
-        await asyncio.sleep(0.05)   # 🔥 speed control
+        await asyncio.sleep(0.05)
 
 
 # ================================
-# 🔹 START
+# START
 # ================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "🤖 Welcome to GenAI Bot!\n\n"
+        " Welcome to GenAI Bot!\n\n"
         "/ask <query>\n/image\n/help"
     )
 
 
 # ================================
-# 🔹 ASK
+# ASK
 # ================================
 async def ask(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = " ".join(context.args)
@@ -92,19 +92,18 @@ async def ask(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     save_chat(user_id, query, answer)
 
-    # 🔥 typing effect instead of instant reply
     await send_typing(update, answer)
 
 
 # ================================
-# 🔹 HELP
+# HELP
 # ================================
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("/ask <query>\n/image\n/help")
 
 
 # ================================
-# 🔹 IMAGE
+# IMAGE
 # ================================
 async def image_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Upload an image.")
@@ -128,7 +127,7 @@ async def handle_image(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 # ================================
-# 🔹 MAIN
+# MAIN
 # ================================
 def main():
     app = ApplicationBuilder().token(TOKEN).build()
